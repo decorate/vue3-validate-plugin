@@ -1,6 +1,6 @@
 {
   "name": "@team-decorate/vue3-validate-plugin",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "main": "./dist/index.umd.js",
   "types": "./dist/src/index.d.ts",
   "files": [

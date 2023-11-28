@@ -11,29 +11,21 @@ const validateRequest = (req, res, next) => {
             errors: {
                 id: ['idは必須です'],
                 name: ['名前は必須です'],
-                email: ['emailは必須です']
+                email: ['emailは必須です'],
+                createdAt: ['日付は必須です'],
+                updatedAt: ['更新日は必須です']
             },
-            message: 'idは必須です。 (and 1 more errors)'
+            message: 'idは必須です。 (and 4 more errors)'
         });
     }
     if (req.method === 'PUT' && !req.body.name) {
         return res.status(421).json({
-            errors: {
-                id: ['idは必須です'],
-                name: ['名前は必須です'],
-                email: ['emailは必須です']
-            },
-            message: 'idは必須です。 (and 1 more errors)'
+            message: 'default error'
         });
     }
     if (req.method === 'PATCH' && !req.body.name) {
         return res.status(430).json({
-            errors: {
-                id: ['idは必須です'],
-                name: ['名前は必須です'],
-                email: ['emailは必須です']
-            },
-            message: 'idは必須です。 (and 1 more errors)'
+            message: 'permission error'
         });
     }
     next();
