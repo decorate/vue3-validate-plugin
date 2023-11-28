@@ -14,6 +14,7 @@ const test = async () => {
     } catch (e) {
         if(e instanceof ValidateError) {
             setValidError(e)
+            console.log(validError)
         }
     }
 }

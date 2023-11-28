@@ -42,6 +42,7 @@ watchEffect(() => {
         return
     }
 
+    clearErrorMessages()
     const { errors } = validError.value
     Object.keys(errors).forEach((x) => {
         const errorMessage = errors![x].join('')

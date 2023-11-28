@@ -61,7 +61,7 @@ const test = async () => {
 
 ```
 - setValidateErrorはValidateErrorのみを受け付ける
-- validateErrorが発生した時、<validate-wrap>で囲ったHtmlElementのdataに対してerrorのkeyがヒットすれば対象のhtmlの下部にエラーメッセージを表示する
+- validateErrorが発生した時、"\<validate-wrap>\"で囲ったHtmlElementのdataに対してerrorのkeyがヒットすれば対象のhtmlの下部にエラーメッセージを表示する
 
 ### exportされる機能
 | module | description |
