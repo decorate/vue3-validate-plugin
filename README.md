@@ -72,5 +72,5 @@ const test = async () => {
 | provideValidateContext | マニュアルでuseValidateを使用する際は呼び出す |
 | useValidate | validateErrorを操作する |
 | ValidatePlugin | useValidateを提供する |
-| ValidateWrap | <validate-wrap>で囲みvalidateErrorを表示させる |
+| ValidateWrap | "<validate-wrap>"で囲みvalidateErrorを表示させる |
 
