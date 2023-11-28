@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+
+    app:
+        build:
+            context: .
+        container_name: vue3-validate-plugin
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "8088:5173"
+            - "3000:3000"
+        volumes:
+            - ../:/usr/src/vue3-validate-plugin
+        networks:
+          - vue3-validate-plugin-network
+
+networks:
+  vue3-validate-plugin-network:
+    driver: bridge

@@ -1,0 +1,1 @@
+{"version":3,"file":"PermissionError.d.ts","sourceRoot":"","sources":["../../../src/exceptions/PermissionError.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,gCAAgC,CAAA;AAEzD,qBAAa,eAAgB,SAAQ,QAAQ;IAC3C,eAAe,UAAO;gBAGpB,OAAO,CAAC,EAAE,MAAM,EAChB,IAAI,CAAC,EAAE,MAAM,EACb,MAAM,CAAC,EAAE,GAAG,EACZ,OAAO,CAAC,EAAE,GAAG,EACb,QAAQ,CAAC,EAAE,GAAG;CAIjB"}

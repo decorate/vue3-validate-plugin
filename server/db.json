@@ -1,0 +1,25 @@
+{
+  "molcars": [
+    {
+      "name": "ポテト",
+      "favoriteFood": "ニンジン"
+    },
+    {
+      "name": "シロモ",
+      "favoriteFood": "レタス"
+    },
+    {
+      "id": 1
+    }
+  ],
+  "episodes": [
+    {
+      "id": 1,
+      "title": "渋滞は誰のせい？"
+    },
+    {
+      "id": 2,
+      "title": "銀行強盗をつかまえろ！"
+    }
+  ]
+}
