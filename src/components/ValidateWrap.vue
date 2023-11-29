@@ -45,7 +45,7 @@ watchEffect(() => {
     clearErrorMessages()
     const { errors } = validError.value
     Object.keys(errors).forEach((x) => {
-        const errorMessage = errors![x].join('')
+        const errorMessage = errors![x].join(',')
         const inputElements = findInputElement(x)
 
         if (inputElements?.length) {
