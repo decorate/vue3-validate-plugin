@@ -24,6 +24,9 @@ export const ValidatePlugin: IValidatePlugin = {
 		}
 	},
 	attachAxiosInterceptor(options?: IValidateOption) {
+		if(!options?.axios) {
+			throw new Error('Pass axios to option. or set option.manual = true to provide it manually')
+		}
 		options?.axios?.interceptors.response.use(
 			(response: AxiosResponse) => {
 				return Promise.resolve(response)

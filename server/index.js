@@ -9,9 +9,9 @@ const validateRequest = (req, res, next) => {
     if (req.method === 'POST' && !req.body.name) {
         return res.status(422).json({
             errors: {
-                id: ['idは必須です'],
-                name: ['名前は必須です'],
-                email: ['emailは必須です'],
+                id: ['id is required'],
+                name: ['name is required', 'name is string'],
+                email: ['email is required'],
                 createdAt: ['日付は必須です'],
                 updatedAt: ['更新日は必須です']
             },

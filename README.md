@@ -1,76 +1,73 @@
-## vue3-validate-plugin
-### インストール
-With yarn:
+## Installing
 
- 	yarn add @team-decorate/vue3-validate-plugin
+Using yarn:
 
-### 使い方
+```bash
+$ yarn add @team-decorate/vue3-validate-plugin
+```
+
+Once the package is installed, you can import the library using `import` approach:
 
 ```typescript
-//main.ts
+import { ValidatePlugin, useValidate, ValidateWrap } from '@team-decorate/vue3-validate-plugin'
+```
+
+## Example
+
+How to install to app:
+
+> **Note**: Insert exception 
+> You can insert your own error by passing 
+> registerError as an option. Please register with IRegisterError type
+
+```typescript
+import {createApp} from 'vue'
 import App from '@/App.vue'
-import { ValidatePlugin } from '@team-decorate/vue3-validate-plugin'
 import axios from 'axios'
-import {PermissionError} from '@/exceptions/PermissionError'
+import {ValidatePlugin} from '@team-decorate/vue3-validate-plugin'
 
 const app = createApp(App)
 app.use(ValidatePlugin, {
-    axios: axios, //optional
+	axios: axios,
 	registerError: [
 		{codeCondition: (n) => n == 430, error: PermissionError}
-	], //optional,
-    manual: false //optional, default false
+	], //optional
 })
 ```
-- app.useにpluginを渡す
-- plugin側でaxios.interceptorを実行しているので、optionにaxiosを渡す
-- registerErrorで他のErrorを登録する
-- manualをtrueにするとprovide登録、interceptorの登録をplugin側では行わない
+
+How to use ValidateWrap:
 
 ```vue
-//SomeComponent.vue
-<script setup lang="ts">
-import {ref} from 'vue'
-import {useValidate, ValidateWrap, ValidateError} from '@team-decorate/vue3-validate-plugin'
-import {BFormInput} from 'bootstrap-vue-3'
-import {User} from '@/models/User'
 
-const user = ref(new User)
+<script setup lang="ts">
+import {ValidateWrap, ValidateError, useValidate} from '@team-decorate/vue3-validate-plugin'
+import axios from 'axios'
+
 const {setValidError} = useValidate()
 
-const test = async () => {
+const submit = async () => {
     try {
-        const {data} = await axios.post('/test')
+        await axios.post('/api/some', data)
     } catch (e) {
-        if(e instanceof ValidateError) {
+        if (e instanceof ValidateError) {
             setValidError(e)
         }
     }
 }
-
 </script>
 
 <template>
-    <div>
-        <validate-wrap>
-            <b-form-input v-model="user.id" data="id"/>
-            <other-component v-model="user.value" data="value"/>
-        </validate-wrap>
-    </div>
+    <validate-wrap>
+        <div class="mb-3">
+            <label>name</label>
+            <input v-model="user.name" class="form-control" data="name">
+        </div>
+        <div class="mt-3">
+            <label>email</label>
+            <input v-model="user.email" class="form-control" data="email">
+        </div>
+    </validate-wrap>
+    <button @click="submit">submit</button>
 </template>
-
 ```
-- setValidateErrorはValidateErrorのみを受け付ける
-- validateErrorが発生した時、"\<validate-wrap>\"で囲ったHtmlElementのdataに対してerrorのkeyがヒットすれば対象のhtmlの下部にエラーメッセージを表示する
-
-### exportされる機能
-| module | description |
-|--|--|
-| ApiError | Errorを追加する際はApiErrorを継承する |
-| ValidateError | Validateの情報が入ったexception |
-| GenerateErrorService | 対象のexceptionに変換する |
-| provideValidateContext | マニュアルでuseValidateを使用する際は呼び出す |
-| useValidate | validateErrorを操作する |
-| ValidatePlugin | useValidateを提供する |
-| ValidateWrap | "\<validate-wrap>\"で囲みvalidateErrorを表示させる |
-
+![example](https://private-user-images.githubusercontent.com/27335928/286467101-7b88e3b7-1d75-4112-a03d-b5f2dc81e8fc.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE3MDEyMjg3NTgsIm5iZiI6MTcwMTIyODQ1OCwicGF0aCI6Ii8yNzMzNTkyOC8yODY0NjcxMDEtN2I4OGUzYjctMWQ3NS00MTEyLWEwM2QtYjVmMmRjODFlOGZjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzExMjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMxMTI5VDAzMjczOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWM0M2FlYThmNmVkYzk3MjEyZDY2ODc3ODA0NzIxYzA1MDg5ZTdjMTk1MWQ5MzA1ZjFiOGIzOGMzMjM0ZTlhMTgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.fpglX8hCVmBtFS7e6jOny3NvoCRu8Xl69gjX5RS7gX4)

@@ -48,32 +48,40 @@ const test3 = async () => {
         <b-container class="m-4">
             <b-form>
                 <validate-wrap>
-                    <b-form-group>
-                        <b-form-floating-label>id</b-form-floating-label>
-                        <b-form-input data="id"/>
-                    </b-form-group>
-                    <b-form-group>
-                        <b-form-floating-label>name</b-form-floating-label>
-                        <b-form-input data="name"/>
-                    </b-form-group>
-                    <b-form-group>
-                        <span data="email">email span</span>
-                    </b-form-group>
-                    <b-form-group>
-                        <input type="date" data="createdAt">
-                    </b-form-group>
-                    <div>
-                        <input type="datetime-local" data="updatedAt">
+                    <div class="mb-3">
+                        <label>name</label>
+                        <input class="form-control" data="name">
                     </div>
+                    <div class="mt-3">
+                        <label>email</label>
+                        <input class="form-control" data="email">
+                    </div>
+<!--                    <b-form-group>-->
+<!--                        <b-form-floating-label>id</b-form-floating-label>-->
+<!--                        <b-form-input data="id"/>-->
+<!--                    </b-form-group>-->
+<!--                    <b-form-group>-->
+<!--                        <b-form-floating-label>name</b-form-floating-label>-->
+<!--                        <b-form-input data="name"/>-->
+<!--                    </b-form-group>-->
+<!--                    <b-form-group>-->
+<!--                        <span data="email">email span</span>-->
+<!--                    </b-form-group>-->
+<!--                    <b-form-group>-->
+<!--                        <input type="date" data="createdAt">-->
+<!--                    </b-form-group>-->
+<!--                    <div>-->
+<!--                        <input type="datetime-local" data="updatedAt">-->
+<!--                    </div>-->
                 </validate-wrap>
             </b-form>
             
             <div class="mt-2">
                 <b-button-group>
-                    <b-button @click="test">test</b-button>
-                    <b-button @click="test2">test2</b-button>
-                    <b-button @click="test3">test3</b-button>
-                    <b-button @click="() => clearValidate()">clear error</b-button>
+                    <b-button @click="test">submit</b-button>
+<!--                    <b-button @click="test2">test2</b-button>-->
+<!--                    <b-button @click="test3">test3</b-button>-->
+<!--                    <b-button @click="() => clearValidate()">clear error</b-button>-->
                 </b-button-group>
             </div>
         </b-container>
